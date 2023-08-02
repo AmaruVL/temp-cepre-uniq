@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Ficha Inscripcion</title>
+</head>
+<style>
+    body {
+        padding: 5px 15px;
+        margin: 2% 30%;
+    }
+
+    .header-doc {
+        padding: 5px;
+        text-align: center;
+    }
+
+    .codigo-est {
+        text-align: center;
+    }
+
+    th,
+    td,
+    td {
+        border: 1px solid #cccccc;
+    }
+
+    td.text-bold {
+        font-weight: bold;
+        padding-left: 5px;
+        width: 325px;
+
+    }
+
+    .centered-text-bold {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .centered-text {
+        text-align: center;
+    }
+
+    td.text-bold-stretch {
+        font-weight: bold;
+        padding-left: 5px;
+        width: 70px;
+    }
+
+    .image-place {
+        position: absolute;
+        padding-top: 10px;
+    }
+</style>
+
+<body style="padding: 0px 25px;">
+    <div class="image-place">
+        <img src="https://uniq.edu.pe/static/media/Logo_uniq.fd2b6b7e.png" alt="uniq logo" width="100" height="100">
+    </div>
+    <div class="header-doc">
+        <h6 style="text-align:center; color:#376970;">CENTRO PREUNIVERSITARIO - UNIQ</h6>
+        <h6 style="text-align:center; color:#376970;">FICHA DE INSCRIPCION</h6>
+    </div>
+    <div class="codigo-est">
+        <h5>
+            {{ dni }}
+        </h5>
+        <h6>
+            CODIGO ESTUDIANTE
+        </h6>
+    </div>
+    <!-- ENCABEZADO DE MODALIDAD -->
+    <div class="tabla-ciclo">
+        <table style="width: 100%;" class="table" style="text-align:center;">
+            <tr>
+                <td style="padding: 0px 5px;background-color: #cccccc; border-style: solid; border: 2px solid black;">
+                    <b>MODALIDAD DE ADMISION: CEPRE - {{ ciclo }}</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DATOS PRINCIPALES -->
+    <!-- <div class="main-data">
+        <table style="width: 100%; text-align:center;">
+            <tr style="width: 100%;">
+                <td style="background-color: #cccccc;"><b>DATOS PRINCIPALES</b></td>
+            </tr>
+            <tr>
+                <td> {{ apellido_paterno}} </td>
+                <td> {{ apellido_materno }} </td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td> APELLIDO PATERNO </td>
+                    <td> APELLIDO MATERNO </td>
+                </tr>
+            </tbody>
+            <tr>
+                <td> {{ nombres }} </td>
+            </tr>
+            <tr>
+                <td">NOMBRES</td>
+            </tr>
+            <tr>
+                <td> {{ escuela_profesional }} </td>
+            </tr>
+            <tr>
+                <td>ESCUELA PROFESIONAL</td>
+            </tr>
+        </table>
+    </div> -->
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Revision de Documentos</title>
+</head>
+<style>
+    body {
+        padding: 15px 15px;
+        margin: 2% 18%;
+        border: 2px solid blue;
+        border-radius: 15px;
+    }
+    .header-doc{
+        padding: 20px;
+        text-align: center;
+    }
+    table{
+        text-align: center;        
+    }
+
+</style>
+<body style="padding: 0px 150px;">
+    <div class="header-doc">
+        <h2 style="text-align:center; color:#376970;">CENTRO PREUNIVERSITARIO <br> UNIQ</h2>
+        <center>
+            <img src="https://uniq.edu.pe/static/media/Logo_uniq.fd2b6b7e.png" alt="uniq logo" width="200" height="200">
+        </center>
+        <h2 style="text-align:center; color:#376970;">REVISION DE DOCUMENTOS</h2>
+    </div>
+    <br>
+    <h3>
+        Señor <b>{{ nombre_completo }}</b> identificado con <b>DNI: {{ dni }}</b>, postulante a la Carrera Profesional de <b>{{ escuela_profesional }}</b> se le notifica mediante el presente que tiene observaciones en los documentos requeridos para finalizar su inscripcion al ciclo <b>{{ denominacion_ciclo }}</b>, los cuales son:
+    </h3>
+    <center>
+        <table  style="border-collapse: collapse;
+        width: 100%;" class="table" style="text-align:center;" >
+            <thead>
+                <th>Demoninacion</th>
+                <th>Observacion</th>
+            </thead>
+            <tbody>
+                {% for doc in documentos %}
+                    <tr style="border-bottom: 1px solid #ddd; text-align:center;">
+                        <td><b>{{ doc.nombre_documento }}</b></td>
+                        <td><b> {{ doc.observaciones }} </b></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+    <h3 style="color:#376970;">
+        <b>RECUERDA</b>: Corrige tus documentos en la brevedad posible para evitar inconvenientes.        
+    </h3>
+</body>
+</html>

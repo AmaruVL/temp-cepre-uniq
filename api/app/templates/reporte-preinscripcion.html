@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Resumen Preinscripcion</title>
+</head>
+<style>
+    body {
+        padding: 15px 15px;
+        margin: 2% 18%;
+    }
+    .header-doc{
+        padding: 20px;
+        text-align: center;
+    }
+    table{
+        text-align: center;        
+    }
+	table td {
+		border: solid 1px #333333;
+	}
+	table th {
+		border: solid 1px #444444;
+		padding: 2px;
+	}
+
+</style>
+<body style="padding: 0px;">
+    <div class="header-doc">
+        <h2 style="text-align:left; color:#376970;">
+            <img src="https://uniq.edu.pe/static/media/Logo_uniq.fd2b6b7e.png" alt="uniq logo" width="50" height="50">
+		CENTRO PREUNIVERSITARIO - UNIQ
+	</h2>
+        <h2 style="text-align:center; color:#376970;">Reporte de preinscripcion</h2>
+    </div>
+    <table style="align: center; width: 80%;">
+	    <thead>
+		    <tr>
+					<th width="80">Nro</th>
+					<th width="300">Fecha</th>
+					<th width="300">Nombre</th>
+					<th width="100">DNI</th>
+					<th width="300">Escuela profesional</th>
+					<th width="200">Ciclo</th>
+			</tr>
+	    </thead>
+		<tbody>
+			{% for v in data  %}
+			<tr>
+				<td>{{ v.nro }}</td>
+				<td>{{ v.fecha_registro }}</td>
+				<td>{{ v.dni_persona.nombres }}</td>
+				<td>{{ v.dni_persona.dni }}</td>
+				<td>{{ v.id_escuela_profesional.nombre_escuela_profesional }}</td>
+				<td>{{ v.id_ciclo.denominacion }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Ficha Inscripcion</title>
+</head>
+<style>
+    body {
+        padding: 5px 15px;
+        margin: 2% 5%;
+    }
+    .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+        padding: 1px;
+        }
+</style>
+
+<body style="padding: 0px 25px;">
+    <div style="position: absolute; padding-top: 5px;">
+        <img src="https://uniq.edu.pe/static/media/Logo_uniq.fd2b6b7e.png" alt="uniq logo" width="100" height="100">
+    </div>
+    <div class="header-doc">        
+        <h6 style="text-align:center; color:#376970;">CENTRO PREUNIVERSITARIO - UNIQ</h6>
+            <h6 style="text-align:center; color:#376970;">FICHA DE INSCRIPCION</h6>
+    </div>
+    <div style="text-align: center;">
+        <h5>
+            {{ dni }}
+        </h5>
+        <h6>
+            CODIGO ESTUDIANTE
+        </h6>
+    </div>
+    <!-- ENCABEZADO DE MODALIDAD -->
+    <div>
+        <table style="width: 100%;" class="table" style="text-align:center;">
+            <tr>
+                <td style="padding: 0px 5px;background-color: #cccccc; border-style: solid; border: 2px solid black;">
+                    <b>MODALIDAD DE ADMISION: CEPRE - {{ ciclo }}</b></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- DATOS PRINCIPALES -->
+    <div class="main-data">
+        <table class="table table-bordered border-primary text-center">
+            <tr>
+                <th class="table-secondary" colspan="5"><b>DATOS PRINCIPALES</b></td>
+            </tr>
+            <tr>
+                <td> {{ apellido_paterno}} </td>
+                <td> {{ apellido_materno }} </td>
+            </tr>            
+            <tbody>
+                <tr>
+                    <td><b>APELLIDO PATERNO</b></td>
+                    <td><b>APELLIDO MATERNO</b></td>
+                </tr>
+            </tbody>
+            <tr>
+                <td colspan="5"> {{ nombres }} </td>
+            </tr>
+            <tr>
+                <td colspan="5"><b>NOMBRES</b></td>
+            </tr>
+            <tr>
+                <td colspan="5"> {{ escuela_profesional }} </td>
+            </tr>
+            <tr>
+                <td colspan="5"><b>ESCUELA PROFESIONAL</b></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <!-- DATOS SECUNDARIOS -->
+    <div class="main-data">
+        <table class="table table-bordered border-primary">
+            <tr>
+                <td class="table-secondary text-center" colspan="5"><b>DATOS SECUNDARIOS</b></td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center"> {{ institucion_educativa }} </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center"><b>INSTITUCION EDUCATIVA</b></td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center"> {{ tipo_colegio }} </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center"><b>TIPO</b></td>
+            </tr>
+            <tr>
+                <td class="col-md-4 px-2"><b>UBIGEO I.E.:</b></td>
+                <td class="px-2"> {{ ubigeo_ie }} </td>
+            </tr>            
+            <tbody>
+                <tr>
+                    <td class="col-md-4 px-2"> <b>LUGAR DE PROC.:</b>  </td>
+                    <td class="px-2">{{ ubigeo_procedencia }} </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4 px-2"> <b>IDIOMA:</b> </td>
+                    <td class="px-2"> {{ idioma }} </td>
+                </tr>
+            </tbody>
+            <tr>
+                <td colspan="5" class="text-center"> {{ direccion }} </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center"><b>DIRECCIÓN</b></td>
+            </tr>
+            <tr>                
+                <td class="col-md-4 px-2"> <b>LUGAR DE NACIMIENTO:</b> </td>
+                <td class="px-2"> {{ ubigeo_nacimiento }} </td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td class="col-md-4 px-2"><b>DISCAPACIDAD:</b> </td>
+                    <td class="px-2"> {{ discapacidad }} </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4 px-2"><b>SEXO:</b></td>
+                    <td class="px-2">  {{ sexo }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div >
+        <table class="table table-bordered border-primary">
+            <tr >                    
+                <td class="col-md-2 px-2"><b>FECHA DE NAC.:</b>:</td>
+                <td class="col-md-2 px-2">  {{ fecha_nac }} </td>
+                <td class="col-md-2 px-2"><b>EDAD:</b></td>
+                <td> {{ edad }} </td>
+            </tr>            
+            <tbody>
+                <tr>                    
+                    <td class="col-md-2 px-2"><b>TELEFONO:</b>:</td>
+                    <td class="col-md-2 px-2"> {{ telefono }} </td>
+                    <td class="col-md-2 px-2"><b>EMAIL:</b></td>
+                    <td>{{ email }}</td>
+                </tr>
+                <tr>                    
+                    <td class="col-md-2 px-2"><b>TEL. APODERADO:</b></td>
+                    <td class="col-md-2 px-2">{{ telef_apoderado }}</td>
+                    <td class="col-md-3 px-2"><b>NOMBRES APODERADO:</b></td>
+                <td> {{ nombres_apoderado }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <!-- INFORMACION DE PAGOS -->
+
+    <div>
+        <table class="table table-bordered border-primary">
+            <tr>
+                <td class="table-secondary" colspan="5">INFORMACION DE PAGOS</td>
+            </tr>
+            <thead>
+                <th>Nro. de cuota</th>
+                <th>Fecha Vencimiento</th>
+                <th>Monto Parcial (S/.)</th>
+                <th>Codigo de Pago</th>
+            </thead>
+            <tbody>
+                {% for cuota in detalle_cuotas %}
+                <tr style="border-bottom: 1px solid #ddd; text-align:center;">
+                    <td><b>{{ cuota.numero_cuota }}</b></td>
+                    <td><b>{{ cuota.fecha_fin }}</b></td>
+                    <td><b>{{ cuota.monto }}</b></td>
+                    <td><b>{{ cuota.codigo_compromiso_pago }}</b></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tr>
+                <td class="table-secondary"><b>TOTAL</b></td>
+                <td> {{ total_pago }} </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

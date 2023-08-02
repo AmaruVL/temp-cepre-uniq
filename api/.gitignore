@@ -1,0 +1,8 @@
+.idea
+.vscode
+/__pycache__
+*.pyc
+*.swp
+*.swo
+cargar_documentos/
+media/
