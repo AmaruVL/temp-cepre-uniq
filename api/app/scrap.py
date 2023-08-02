@@ -145,10 +145,10 @@ def autenticate_to_and_save_token_old():
     response = requests.post(
                     url= url, 
                     data={
-                            "username": "ORMACHEA3974",
-                            "password": "123456",
+                            "username": "MAMANI5393",
+                            "password": "&CEPR32024",
                             "ide_eje": 5804,
-                            "ano_eje": "2022",
+                            "ano_eje": "2023",
                             "ide_apl": 46
                         }
                 )

@@ -38,7 +38,6 @@
         "oidc-client": "^1.11.5",
         "oidc-client-ts": "^2.0.6",
         "perfect-scrollbar": "1.5.2",
-        "phantomjs-prebuilt": "^2.1.13",
         "prismjs": "1.25.0",
         "prop-types": "15.7.2",
         "qs": "6.10.1",
@@ -110,7 +109,7 @@
     },
     "scripts": {
         "start": "craco start",
-        "build": "cross-env GENERATE_SOURCEMAP=false craco build",
+        "build": "cross-env GENERATE_SOURCEMAP=false NODE_OPTIONS=--max_old_space_size=512 craco build",
         "test": "craco test --env=node",
         "eject": "craco eject",
         "build-docs": "babel-node --presets @babel/preset-env src/app/main/documentation/material-ui-components/build.js",

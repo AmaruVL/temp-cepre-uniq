@@ -153,55 +153,26 @@ const FormularioDatosGenerales = (props) => {
     setIdioma(event.target.value);
   };
   const idiomas = [
-    {value:1, label:"Achuar"},
-    {value:2,	label:"Aimara"},
-    {value:3,	label:"Amahuaca"},
-    {value:4, label:"Arabela"},
-    {value:5, label:	"Ashanika"},
-    {value:6, label:	"Asheninka"},
-    {value:7, label:	"Awajún"},
-    {value:8, label:	"Bora"},
-    {value:9, label:	"Cashinahua"},
-    {value:10, label:	"Chamicuro"},
-    {value:11, label:	"Ese eja"},
-    {value:12, label:	"Español"},
-    {value:13, label:	"Harakbut"},
-    {value:14, label:	"Ikitu"},
-    {value:15, label:	"Iñapari"},
-    {value:16, label:	"Iskonawa"},
-    {value:17, label:	"Jaqaru"},
-    {value:18, label:	"Kakataibo"},
-    {value:19, label:"Kakinte"},
-    {value:20, label:	"Kandozi-chapra"},
-    {value:21, label:	"Kapanawa"},
-    {value:22, label:	"Kawki"},
-    {value:23, label:	"Kukama kukamiria"},
-    {value:24, label:	"Madija"},
-    {value:25, label:	"Maijiki"},
-    {value:26, label:	"Matsés"},
-    {value:27, label:	"Matsigenka"},
-    {value:28, label:	"Muniche"},
-    {value:29, label:	"Murui-muinani"},
-    {value:30, label:	"Nahua"},
-    {value:31, label:	"Nanti"},
-    {value:32, label:	"Nomatsigenga"},
-    {value:33, label:	"Ocaina"},
-    {value:34, label:	"Omagua"},
-    {value:35, label:	"Quechua"},
-    {value:36, label:	"Resígaro"},
-    {value:37, label:	"Secoya"},
-    {value:38, label:	"Sharanahua"},
-    {value:39, label:	"Shawi"},
-    {value:40, label:	"Shipibo-konibo"},
-    {value:41, label:	"Shiwilu"},
-    {value:42, label:	"Taushiro"},
-    {value:43, label:	"Ticuna"},
-    {value:44, label:	"Urarina"},
-    {value:45, label:	"Wampis"},
-    {value:46, label:	"Yagua"},
-    {value:47, label:	"Yaminahua"},
-    {value:48, label:"Yanesha"},
-    {value:49, label:"Yine"},
+    {
+      value: 'ES',
+      label: 'ESPAÑOL',
+    },
+    {
+      value: 'IN',
+      label: 'INGLES',
+    },
+    {
+      value: 'BO',
+      label: 'BORA',
+    },
+    {
+      value: 'MA',
+      label: 'MATSIGENKA',
+    },
+    {
+      value: 'SK',
+      label: 'SHIPIBO-KONIBO',
+    },
   ];
   const sexos = [
     {
@@ -550,3 +521,4 @@ const FormularioDatosGenerales = (props) => {
 };
 
 export default FormularioDatosGenerales;
+

@@ -30,7 +30,7 @@ from jwt import PyJWKClient
 from django.core.mail import *
 from django.conf import settings
 from django.views.generic import View
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template 
 from django.template import Context
@@ -339,7 +339,7 @@ class credencialesUserEstudiante(APIView):
                     if cuerpo_det['dat_rec'] is None: #no realizo el pago
                         nro_cuota = (c+1)
                         fecha_vec = cuerpo_det['deu_amn']['fch_vto']
-                        fecha = datetime.datetime.strptime(fecha_vec, '%Y-%m-%d').date()
+                        fecha = datetime.strptime(fecha_vec, '%Y-%m-%d').date()
                         k = False
                         final_res = False
 
@@ -366,7 +366,7 @@ class credencialesUserEstudiante(APIView):
                     #     final_res = False
                     c+=1
                 if final_res == False:
-                    total_days = fecha - datetime.datetime.now().date()
+                    total_days = fecha - datetime.now().date()
                     if (total_days.days > 2):
                         mensaje = "Bienvenido al campus virtual"
                     if (total_days.days < 2 and total_days.days > 0):
@@ -1118,7 +1118,9 @@ class validacionConsultaDNI2(APIView):
         data_person = {}
         try:
             #consulta si exite una persona con ese dni en la tabla persona
+            print('PERSONA0', persona_consulta)
             persona_consulta = persona.objects.get(dni=dni)            
+            print('PERSONA', persona_consulta)
             if persona_consulta:
                 try:
                     #consulta si exite un registro de preinscricion activa
@@ -1196,7 +1198,9 @@ class validacionConsultaDNI(APIView):
         if status == 200:
             try:
             #consulta si exite una persona con ese dni en la tabla persona
+                print('PErSONA', dni)
                 persona_consulta = persona.objects.get(dni=dni)            
+                print('PErSONA0', persona_consulta)
                 if persona_consulta:
                     try:
                         #consulta si exite un registro de preinscricion activa
@@ -1308,7 +1312,7 @@ class detalleCompromisoPagoView(APIView):
 # ··············· REGION VALIDACION DE PREINSCRIPCION ··············{{{
 class validacion_preinscripcion(APIView):
     def post(self, request, format=None):
-        #print('OOK')
+        print('OOK')
         entrada_data = request.data
         dni = entrada_data['dni']
         fecha_nac = entrada_data['fecha_nacimiento']
@@ -1320,13 +1324,15 @@ class validacion_preinscripcion(APIView):
 
         persona_dni = None
         try:
+            print('D,', fecha_dato)
             persona_dni = persona.objects.get(dni=dni, fecha_nacimiento=fecha_dato)
         except persona.DoesNotExist:
+            print('ERR', 1)
             return Response({
                 "is_valid" : False,
                 "esta_pagado": False,
-                "message": "La información ingresada no es correcta "+
-                            "o no has realizado el pago por derechos de matrícula"
+                "message": "L.a información ingresada no es correcta "+
+                            "o no has realizado el pago por derechos de matrícula.."
             })
 
         preinscripcion_consulta = None
@@ -1936,7 +1942,7 @@ class actualizarPagos(APIView):
                             #Actualizar en la parte de tesoreria
                             registro_pago_tesor = registro_tesoreria.objects.get(id_detalle_compromiso=detalle_compr.id)
                             registro_pago_tesor.esta_pagado = True
-                            registro_pago_tesor.fecha_pago = datetime.datetime.now()
+                            registro_pago_tesor.fecha_pago = datetime.now()
                             registro_pago_tesor.admin = admin
                             registro_pago_tesor.save()
                             #crear una inscripcion
@@ -1971,7 +1977,7 @@ class actualizarPagos(APIView):
 
                             serializer_tesor = registro_tesoreria.objects.get(id_detalle_compromiso=detalle_compr.id)
                             serializer_tesor.esta_pagado = True
-                            serializer_tesor.fecha_pago = datetime.datetime.now()
+                            serializer_tesor.fecha_pago = datetime.now()
                             serializer_tesor.admin = admin
                             serializer_tesor.save()
                             return Response({
@@ -4415,7 +4421,7 @@ class verExamenesCicloParcialSimulacro(APIView):
 
 class fechaxd(APIView):
     def get(self, request):
-        hoy = datetime.datetime.now()
+        hoy = datetime.now()
         p = hoy.strftime("%A")
         q = hoy.strftime("%a")
         return Response({
@@ -4471,7 +4477,7 @@ class generarAsistenciaDocente(APIView):
                     fecha = i[day_esp]
                     hora = dias_horario[day_esp]
                     data = str(fecha) + "T" + str(hora)
-                    datetime_obj = datetime.datetime.strptime(data, "%Y-%m-%dT%H:%M:%S")
+                    datetime_obj = datetime.strptime(data, "%Y-%m-%dT%H:%M:%S")
                     dict_to_create = {
                         "fecha_sesion": datetime_obj,
                         "id_horario": pk
@@ -4504,7 +4510,7 @@ class actualizarAsistenciaDocente(APIView):
             "SUN": "DOM"
         }
         try:
-            now = datetime.datetime.now()
+            now = datetime.now()
             asistencias_dia = asistencia_docente.objects.get(id_horario=id_horario, fecha_sesion__startswith=str(dia_actual))
 
             day_name = now.strftime("%A").upper()
@@ -4782,7 +4788,7 @@ class accederExamenEstudiante(APIView):
                 dict = {}
                 examen_detalle = examen.objects.get(id=i.id_examen.id)
                 #HORA ACTUAL
-                fecha_act = datetime.datetime.now()
+                fecha_act = datetime.now()
 
                 if fecha_act.hour == 0 and fecha_act.minute == 0:
                     new_hour = 23
@@ -5002,7 +5008,7 @@ class ingresarAlExamen(APIView):
         #RECUPERAMOS EL EXAMEN DEL ESTUDIANTE CON SU NOTA AUN EN NSP
         examen_estudiante_rec = examen_estudiante.objects.get(id_estudiante=id_estudiante, id_examen=id_examen_gen)
         print(examen_estudiante_rec)
-        fecha_act = datetime.datetime.now()
+        fecha_act = datetime.now()
         if fecha_act.time() <= hora_fin_examen:
             if examen_estudiante_rec.esta_finalizado == False:
                 #RECUPERAR LOS REGISTROS DE RESULTADOS_NOTAS_ESTUDIANTE QUE ESTAN CON NULL
@@ -5101,7 +5107,7 @@ class calificacionCiclicaPreguntas(APIView):
         registros_nulos = resultados_examen_estudiante.objects.filter(id_examen_estudiante=examen_estudiante_rec, letra_respuesta__isnull=True, estado_respuesta__isnull=True, nota_respuesta__isnull=True)
 
         #HORA ACTUAL
-        fecha_act = datetime.datetime.now()
+        fecha_act = datetime.now()
         # if fecha_act.time() <= hora_fin_examen:
         #REVISAMOS SI ESTA AUN EN HORA DE RENDIR EXAMEN
         #RECUPERAR LOS REGISTROS DE RESULTADOS_NOTAS_ESTUDIANTE QUE ESTAN CON NULL
@@ -5241,7 +5247,7 @@ class crearDeudas(APIView):
     def post(self, request, format=None):
         # token, fecha_token = review_token_from_file()
         token = generar_token()
-        now = datetime.datetime.now().date()
+        now = datetime.now().date()
         asca = ciclo.objects.get(id=1)
         print("DETALLES CICLO", asca)
         print("FECHA", asca.fecha_fin_ciclo)

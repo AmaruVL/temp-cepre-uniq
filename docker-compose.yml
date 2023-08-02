@@ -3,7 +3,7 @@ version: "3"
 services:
   database:
     image: mysql:5.7
-    container_name: cep-database
+    container_name: cepre-database
     environment:
       MYSQL_DATABASE: 'cepre'
       MYSQL_USER: 'cepre'
@@ -13,34 +13,31 @@ services:
       - int-nw
       - out-nw
     ports:
-      - 43296:3306
-    # volumes:
-    #   - ./initdb:/docker-entrypoint-initdb.d
-  # app:
-  #   build: ./api
-  #   container_name: cep-api
-  #   environment:
-  #     HTTP_PROXY: 'http://192.168.1.36:9128'
-  #     HTTPS_PROXY: 'http://192.168.1.36:9128'
-  #   depends_on:
-  #     - database
-  #   networks:
-  #     - int-nw
-  #     - out-nw
-  #   volumes:
-  #     - ./api:/api
-  #   ports:
-  #     - 20801:8080
-#  web:
-#    image: nginx:1.15.8
-#    container_name: cep-web
-#    restart: unless-stopped
-#    volumes:
-#      - "./nginx-default.conf:/etc/nginx/conf.d/default.conf"
-#      - ./web:/usr/share/nginx/html
-#    ports:
-#      - 23800:80
-
+      - 43286:3306
+  app:
+    build: ./api
+    container_name: cepre-api
+    environment:
+      HTTP_PROXY: 'http://192.168.1.36:9128'
+      HTTPS_PROXY: 'http://192.168.1.36:9128'
+    depends_on:
+      - database
+    networks:
+      - int-nw
+      - out-nw
+    volumes:
+      - ./api:/api
+    ports:
+      - 20901:8080
+  web:
+    image: nginx:1.15.8
+    container_name: cepre-web
+    restart: unless-stopped
+    volumes:
+      - "./nginx-default.conf:/etc/nginx/conf.d/default.conf"
+      - ./web:/usr/share/nginx/html
+    ports:
+      - 20900:80
 
         
 
